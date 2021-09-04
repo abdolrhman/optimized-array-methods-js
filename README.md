@@ -26,7 +26,12 @@ as sort method already has similar implementation with insertion and merge sort 
 i would say its better to use <b>sort</b> built in method
 ```
 
+## Better solution
 
+> this one i didn't implement, but I would say it would do much better,
+
+- start by creating a function to know if the incoming value is near middle or start or end 'mathmetically' 
+- and by the position we can implement specific solution
 
 ## Contents
 - index.js: where you should add your implementation.

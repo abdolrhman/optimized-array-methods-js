@@ -1,10 +1,10 @@
-import { pipe, always, applySpec } from 'ramda';
+import {pipe, always, applySpec} from 'ramda';
+import {insertionSort, toList} from './utils.js';
 
 const getValue = (o, sortKey) => sortKey ? o[sortKey] : o
 
 const sort = (list, sortKey) => {
-  // SHOULD IMPLEMENT
-  return list;
+  return insertionSort(list)
 };
 
 /*
@@ -21,20 +21,20 @@ const sort = (list, sortKey) => {
  * the returned value can be the index of any one of the equal elements.
  */
 function binarySearch(ar, el, compare_fn) {
-    let m = 0;
-    let n = ar.length - 1;
-    while (m <= n) {
-        let k = (n + m) >> 1;
-        let cmp = compare_fn(el, ar[k]);
-        if (cmp > 0) {
-            m = k + 1;
-        } else if(cmp < 0) {
-            n = k - 1;
-        } else {
-            return k;
-        }
+  let m = 0;
+  let n = ar.length - 1;
+  while (m <= n) {
+    let k = (n + m) >> 1;
+    let cmp = compare_fn(el, ar[k]);
+    if (cmp > 0) {
+      m = k + 1;
+    } else if (cmp < 0) {
+      n = k - 1;
+    } else {
+      return k;
     }
-    return -m - 1;
+  }
+  return -m - 1;
 }
 
 function compare_number(a, b) {
@@ -48,16 +48,25 @@ const findIndex = (list, sortKey) => value => {
 
 const insert = (list, sortKey, item) => {
   // SHOULD IMPLEMENT a preserving order insertion
-  return list;
+  const arrToList = toList(list);
+  arrToList.add(item);
+  return arrToList.toArray();
 }
 
 
 const remove = (list, sortKey, value) => {
   // SHOULD IMPLEMENT
-  return list;
+  const arrToList = toList(list);
+
+  const node = arrToList.find(function (node) {
+    return node.data.value === value;
+  });
+  console.log('node node', node);
+  arrToList.remove(node);
+  return arrToList.toArray();
 }
 
-export const List = ({ sortKey, initial, initialOrder}) => {
+export const List = ({sortKey, initial, initialOrder}) => {
   const items = initialOrder ? initial : sort(initial, sortKey);
 
   return {

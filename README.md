@@ -6,6 +6,28 @@ to obtain good preformance for our software we use a fine tuned data sturcture w
 <hr/>
 <br/>
 
+## Solutions
+
+> Find, I am using binary search
+
+```angular2html
+it beats middle and end, but not start, its expected
+```
+
+> Insert and delete i am using linklist
+
+```angular2html 
+it beats middle end also, in benchmark you will not notice it, as in the naive soltion there is no handlation for insert in the middle or end
+```
+
+> Sort i am using insertSort, yet it doesnt beat sort method in javscript,
+```
+as sort method already has similar implementation with insertion and merge sort depend on the engine <br>
+i would say its better to use <b>sort</b> built in method
+```
+
+
+
 ## Contents
 - index.js: where you should add your implementation.
 - index.test.js: you should start by adding unit tests to cover the rest of the required methods.
